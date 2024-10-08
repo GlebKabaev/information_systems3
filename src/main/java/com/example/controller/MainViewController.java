@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class MainViewController {
     
-    public static JButton showButton(JTextField textField,JLabel label) {
+    public static JButton testButton(JTextField textField,JLabel label) {
         JButton button = new JButton("Показать текст");
         
         button.addActionListener(new ActionListener() {
@@ -32,7 +32,8 @@ public static JButton getButton(JList<String> jlist) {
     button.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int n=1000000;
+            //TODO пагинацию бы
+            int n=10;
             Book_rep_DB db=Book_rep_DB.getInstance();
             List<ShortBook> books;
             String[] arr=new String[n];

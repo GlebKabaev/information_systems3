@@ -9,7 +9,7 @@ public class MainView  {
     private JLabel label = new JLabel("Welcome");
     private JList<String> jlist=new JList<>() ;
     private JTextField textField = new JTextField();
-    private JButton button = MainViewController.showButton(textField,label);
+    private JButton button = MainViewController.testButton(textField,label);
     private JButton getButton = MainViewController.getButton(jlist);
     
     
