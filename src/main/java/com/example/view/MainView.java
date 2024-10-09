@@ -1,6 +1,5 @@
 package com.example.view;
 import javax.swing.*;
-import java.util.*;
 import com.example.controller.MainViewController ;
 // import com.example.controller.Observer;
 public class MainView  {
@@ -11,6 +10,7 @@ public class MainView  {
     private JTextField textField = new JTextField();
     private JButton button = MainViewController.testButton(textField,label);
     private JButton getButton = MainViewController.getButton(jlist);
+    private JButton addButton = MainViewController.addButton();
     
     
     // public void update(ArrayList<String> newInfo) {
@@ -19,7 +19,7 @@ public class MainView  {
     private MainView() {
         // frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 700);
+        frame.setSize(900,900);
         frame.setLayout(null);
         frame.setVisible(true);
         //lable
@@ -33,7 +33,10 @@ public class MainView  {
         frame.add(button);
         // getButton
         getButton.setBounds(260, 80, 200, 30);
-        frame.add(getButton);   
+        frame.add(getButton); 
+        //addButton
+        addButton.setBounds(470, 80, 200, 30);
+        frame.add(addButton);
         //jlist
         jlist.setBounds(50,180, 900, 900);
         frame.add(jlist); 

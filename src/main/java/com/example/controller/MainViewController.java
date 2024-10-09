@@ -1,6 +1,7 @@
 package com.example.controller;
 import com.example.model.ShortBook;
 import com.example.model.repository.Book_rep_DB;
+import com.example.view.AddView;
 
 import javax.swing.*;
 import java.util.*;
@@ -33,32 +34,40 @@ public static JButton getButton(JList<String> jlist) {
         @Override
         public void actionPerformed(ActionEvent e) {
             //TODO пагинацию бы
-            int n=10;
-            Book_rep_DB db=Book_rep_DB.getInstance();
-            List<ShortBook> books;
-            String[] arr=new String[n];
-            try{
-            
-            books=db.get_k_n_shortList(0, n);
-            for(int i=0; i<books.size(); i++){
-                arr[i]=books.get(i).toString();
-            }
-            jlist.setListData(arr);
-            }catch(Exception err){
-                System.out.println(err.getMessage());
-            }
-            
-            // String text = textField.getText();
-            // label.setText(text);
-            // System.out.println("Введенный текст: " + text);
-
-            
+            update(jlist);
         }
 });
 
 return button;
 }
 
+public static JButton addButton() {
+    JButton button = new JButton("добавить книгу");
+    
+    button.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            AddView.openFrame();
+        }
+});
 
+return button;
+}
+public static void update(JList<String> jlist){
+    int n=200;
+    Book_rep_DB db=Book_rep_DB.getInstance();
+    List<ShortBook> books;
+    String[] arr=new String[n];
+    try{
+    
+    books=db.get_k_n_shortList(0, n);
+    for(int i=0; i<books.size(); i++){
+        arr[i]=books.get(i).toString();
+    }
+    jlist.setListData(arr);
+    }catch(Exception err){
+        System.out.println(err.getMessage());
+    }
+}
 
 }
