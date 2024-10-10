@@ -5,28 +5,27 @@ import com.example.view.AddView;
 
 import javax.swing.*;
 import java.util.*;
-
+import com.example.view.MainView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainViewController {
-    
-    public static JButton testButton(JTextField textField,JLabel label) {
-        JButton button = new JButton("Показать текст");
-        
+    private static MainView mv;
+    public MainViewController(MainView mv){
+        this.mv=mv;
+        setTestActionListener(mv.getButton());
+    }
+
+    public static void setTestActionListener(JButton button){
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Получение текста из текстового поля и вывод в консоль
-                
-                String text = textField.getText();
-                label.setText(text);
+                String text = mv.getTextField().getText();
+                mv.getLabel().setText(text);
                 System.out.println("Введенный текст: " + text);
             }
-    });
-    
-    return button;
-}
+        });
+    }
 public static JButton getButton(JList<String> jlist) {
     JButton button = new JButton("Показать книги");
     

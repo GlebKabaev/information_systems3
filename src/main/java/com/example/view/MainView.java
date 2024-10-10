@@ -1,4 +1,6 @@
 package com.example.view;
+import java.util.List;
+
 import javax.swing.*;
 import com.example.controller.MainViewController ;
 // import com.example.controller.Observer;
@@ -8,7 +10,7 @@ public class MainView  {
     private JLabel label = new JLabel("Welcome");
     private JList<String> jlist=new JList<>() ;
     private JTextField textField = new JTextField();
-    private JButton button = MainViewController.testButton(textField,label);
+    private JButton button=new JButton("Test");
     private JButton getButton = MainViewController.getButton(jlist);
     private JButton addButton = MainViewController.addButton();
     
@@ -21,7 +23,6 @@ public class MainView  {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900,900);
         frame.setLayout(null);
-        frame.setVisible(true);
         //lable
         label.setBounds(50, 150, 200, 30);
         frame.add(label); 
@@ -41,12 +42,57 @@ public class MainView  {
         jlist.setBounds(50,180, 900, 900);
         frame.add(jlist); 
     }
-    
+    public void openFrame() {
+        frame.setVisible(true);
+    }
     //синглтон 
-    public static MainView openFrame() {
+    public static MainView getInstance() {
         if(mainView == null){
             mainView = new MainView();
         }
         return mainView;
     }
+    //getters
+    public JFrame getFrame() {
+        return frame;
+    }
+    public JLabel getLabel() {
+        return label;
+    }
+    public JList<String> getJlist() {
+        return jlist;
+    }
+    public JTextField getTextField() {
+        return textField;
+    }
+    public JButton getButton() {
+        return button;
+    }
+    public JButton getGetButton() {
+        return getButton;
+    }
+    public JButton getAddButton() {
+        return addButton;
+    }
+    //setters
+    public void setLabel(String text) {
+        label.setText(text);
+    }
+    public void setJlist(List<String> newInfo) {
+        jlist.setListData(newInfo.toArray(new String[0]));
+    }
+    public void setTextField(String text) {
+
+        textField.setText(text);
+    }
+    public void setButton(JButton newButton) {
+        button = newButton;
+    }
+    public void setGetButton(JButton newGetButton) {
+        getButton = newGetButton;
+    }
+    public void setAddButton(JButton newAddButton) {
+        addButton = newAddButton;
+    }
+    
 }

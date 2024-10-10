@@ -6,6 +6,7 @@ import java.util.*;
 
 import javax.swing.JFrame;
 
+import com.example.controller.MainViewController;
 import com.example.model.Book;
 import com.example.model.ShortBook;
 import com.example.model.repository.Book_rep_DB;
@@ -15,7 +16,9 @@ import com.example.view.MainView;
 public class App {
     public static void main(String[] args) {
 
-          MainView.openFrame();
+         MainView mv= MainView.getInstance();
+         MainViewController mvc= new MainViewController(mv);
+         mv.openFrame();
         //Book_rep_DB db=Book_rep_DB.getInstance();
         // for (int i=0; i<40; i++) {
             // db.addBook(new com.example.model.Book(i,"Book "+i,"Author ","Genere ",100,100.0,20.0));
