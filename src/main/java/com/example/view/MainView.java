@@ -2,7 +2,6 @@ package com.example.view;
 import java.util.List;
 
 import javax.swing.*;
-import com.example.controller.MainViewController ;
 // import com.example.controller.Observer;
 public class MainView  {
     private static MainView mainView;
@@ -11,8 +10,8 @@ public class MainView  {
     private JList<String> jlist=new JList<>() ;
     private JTextField textField = new JTextField();
     private JButton button=new JButton("Test");
-    private JButton getButton = MainViewController.getButton(jlist);
-    private JButton addButton = MainViewController.addButton();
+    private JButton getButton = new JButton("Get Books"); 
+    private JButton addButton = new JButton("Добавить книгу");
     
     
     // public void update(ArrayList<String> newInfo) {

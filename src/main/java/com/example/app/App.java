@@ -17,7 +17,9 @@ public class App {
     public static void main(String[] args) {
 
          MainView mv= MainView.getInstance();
-         MainViewController mvc= new MainViewController(mv);
+         MainViewController mvc= MainViewController.getInstance(mv);
+
+
          mv.openFrame();
         //Book_rep_DB db=Book_rep_DB.getInstance();
         // for (int i=0; i<40; i++) {

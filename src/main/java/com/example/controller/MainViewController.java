@@ -9,14 +9,22 @@ import com.example.view.MainView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainViewController {
-    private static MainView mv;
-    public MainViewController(MainView mv){
+public class MainViewController implements Observer{
+    private MainView mv;
+    private static MainViewController mvc;
+    private MainViewController(MainView mv){
         this.mv=mv;
         setTestActionListener(mv.getButton());
+        setGetActionListener(mv.getGetButton());
+        setAddActionListener(mv.getAddButton());
     }
-
-    public static void setTestActionListener(JButton button){
+    public static MainViewController getInstance(MainView mainView){
+        if (mvc != null){
+            return mvc;
+        }
+        return new MainViewController(mainView);
+    }
+    public  void setTestActionListener(JButton button){
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -26,47 +34,44 @@ public class MainViewController {
             }
         });
     }
-public static JButton getButton(JList<String> jlist) {
-    JButton button = new JButton("Показать книги");
-    
-    button.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //TODO пагинацию бы
-            update(jlist);
-        }
-});
 
-return button;
-}
-
-public static JButton addButton() {
-    JButton button = new JButton("добавить книгу");
-    
-    button.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            AddView.openFrame();
-        }
-});
-
-return button;
-}
-public static void update(JList<String> jlist){
-    int n=200;
-    Book_rep_DB db=Book_rep_DB.getInstance();
-    List<ShortBook> books;
-    String[] arr=new String[n];
-    try{
-    
-    books=db.get_k_n_shortList(0, n);
-    for(int i=0; i<books.size(); i++){
-        arr[i]=books.get(i).toString();
+    private void setGetActionListener(JButton button){
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO пагинацию бы
+                update();
+            }
+    });
     }
-    jlist.setListData(arr);
-    }catch(Exception err){
-        System.out.println(err.getMessage());
+
+
+    private  void setAddActionListener(JButton button){
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddView.openFrame();
+            }
+    });
     }
-}
+
+    public void update(){
+        JList<String> jlist = mv.getJlist();
+        int n=200;
+        Book_rep_DB db=Book_rep_DB.getInstance();
+        List<ShortBook> books;
+        String[] arr=new String[n];
+        try{
+        
+            books=db.get_k_n_shortList(0, n);
+            for(int i=0; i<books.size(); i++){
+                arr[i]=books.get(i).toString();
+            }
+            jlist.setListData(arr);
+        }catch(Exception err){
+            System.out.println(err.getMessage());
+        }
+    }
 
 }
