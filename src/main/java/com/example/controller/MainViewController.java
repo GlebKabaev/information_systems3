@@ -1,4 +1,5 @@
 package com.example.controller;
+import com.example.model.BookModel;
 import com.example.model.ShortBook;
 import com.example.model.repository.Book_rep_DB;
 import com.example.view.AddView;
@@ -42,7 +43,7 @@ public class MainViewController implements Observer{
                 //TODO пагинацию бы
                 update();
             }
-    });
+        });
     }
 
 
@@ -53,18 +54,18 @@ public class MainViewController implements Observer{
             public void actionPerformed(ActionEvent e) {
                 AddView.openFrame();
             }
-    });
+        });
     }
 
     public void update(){
         JList<String> jlist = mv.getJlist();
         int n=200;
-        Book_rep_DB db=Book_rep_DB.getInstance();
+        BookModel bm=BookModel.getInstance(this);
         List<ShortBook> books;
         String[] arr=new String[n];
         try{
         
-            books=db.get_k_n_shortList(0, n);
+            books=bm.get_k_n_shortList(0, n);
             for(int i=0; i<books.size(); i++){
                 arr[i]=books.get(i).toString();
             }

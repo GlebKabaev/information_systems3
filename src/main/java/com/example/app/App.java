@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import com.example.controller.MainViewController;
 import com.example.model.Book;
+import com.example.model.BookModel;
 import com.example.model.ShortBook;
 import com.example.model.repository.Book_rep_DB;
 import com.example.view.MainView;
@@ -18,7 +19,7 @@ public class App {
 
          MainView mv= MainView.getInstance();
          MainViewController mvc= MainViewController.getInstance(mv);
-
+         BookModel bm=BookModel.getInstance(mvc);
 
          mv.openFrame();
         //Book_rep_DB db=Book_rep_DB.getInstance();
