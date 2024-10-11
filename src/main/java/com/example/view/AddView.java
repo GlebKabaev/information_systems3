@@ -3,16 +3,95 @@ package com.example.view;
 import javax.swing.*;
 
 public class AddView {
+    private static AddView addView;
     private JFrame frame = new JFrame("Добавить книгу");
+    private JTextField title = new JTextField("title");
+    private JTextField author = new JTextField("author");
+    private JTextField genere = new JTextField("genere");
+    private JTextField quantity = new JTextField("quantity");
+    private JTextField depositAmount = new JTextField("depositAmount");
+    private JTextField rentalCost = new JTextField("rentalCost");
+    private JButton addButton = new JButton("Добавить книгу");
+
     private AddView() {
         // frame
         frame.setSize(700, 700);
         frame.setLayout(null);
-        frame.setVisible(true);
+        // title
+        title.setBounds(50, 50, 200, 30);
+        frame.add(title);
+        // author
+        author.setBounds(50, 100, 200, 30);
+        frame.add(author);
+        // genere
+        genere.setBounds(50, 150, 200, 30);
+        frame.add(genere);
+        // quantity
+        quantity.setBounds(50, 200, 200, 30);
+        frame.add(quantity);
+        // depositAmount
+        depositAmount.setBounds(50, 250, 200, 30);
+        frame.add(depositAmount);
+        // rentalCost
+        rentalCost.setBounds(50, 300, 200, 30);
+        frame.add(rentalCost);
+        //addButton
+        addButton.setBounds(260, 300, 200, 30);
+        frame.add(addButton);
     }
 
     //синглтон
-    public static AddView openFrame() {
-        return new AddView();
+    public static AddView getInstance() {
+        if(addView==null){
+            addView= new AddView();
+        }
+        return addView;
+    }
+    public void openFrame() {
+        frame.setVisible(true);
+    }
+    //getters
+    public JTextField getTitle() {
+        return title;
+    }
+    public JTextField getAuthor() {
+        return author;
+    }
+    public JTextField getGenere() {
+        return genere;
+    }
+    public JTextField getQuantity() {
+        return quantity;
+    }
+    public JTextField getDepositAmount() {
+        return depositAmount;
+    }
+    public JTextField getRentalCost() {
+        return rentalCost;
+    }
+    public JButton getAddButton() {
+        return addButton;
+    }
+    //setters
+    public void setTitle(String title) {
+        this.title.setText(title);
+    }
+    public void setAuthor(String author) {
+        this.author.setText(author);
+    }
+    public void setGenere(String genere) {
+        this.genere.setText(genere);
+    }
+    public void setQuantity(String quantity) {
+        this.quantity.setText(quantity);
+    }
+    public void setDepositAmount(String depositAmount) {
+        this.depositAmount.setText(depositAmount);
+    }
+    public void setRentalCost(String rentalCost) {
+        this.rentalCost.setText(rentalCost);
+    }
+    public void setAddButton(JButton addButton) {
+        this.addButton = addButton;
     }
 }

@@ -8,18 +8,20 @@ public class BookModel implements Observable{
     private static BookModel bm;
     private Book_rep_DB db= Book_rep_DB.getInstance();
 
-    public static BookModel getInstance(MainViewController mvc){
+    public static BookModel getInstance(){
         if(bm==null){
-            bm=new BookModel(mvc);
+            bm=new BookModel();
         }
         return bm;
     }
-    private BookModel(MainViewController mvc){
+    private BookModel(){
+        MainViewController mvc=MainViewController.getInstance();
         addObserver(mvc);
     }
 
     public  void addBook(Book book){
         db.addBook(book);
+        System.out.println("Добавляем книгу: " + book); // Для отладки
         notifyObservers();
     }
     public void updateBookById(int id,Book book){

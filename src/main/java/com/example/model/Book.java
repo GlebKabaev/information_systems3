@@ -8,7 +8,13 @@ public class Book extends ShortBook {
     private double depositAmount;
     private double rentalCost;
     //Constructor
-    public Book(int id,String title, String author, String genere, int quantity, double depositAmount, double rentalCost) {
+    public Book(int id,
+                String title,
+                String author,
+                String genere,
+                int quantity,
+                double depositAmount,
+                double rentalCost) {
         super(id,title, author, genere);
         this.quantity =validateNumberField(quantity);
         this.depositAmount =validateNumberField(depositAmount);

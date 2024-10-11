@@ -11,19 +11,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainViewController implements Observer{
-    private MainView mv;
+    private MainView mv=MainView.getInstance();
     private static MainViewController mvc;
-    private MainViewController(MainView mv){
-        this.mv=mv;
+
+    private MainViewController(){
         setTestActionListener(mv.getButton());
         setGetActionListener(mv.getGetButton());
         setAddActionListener(mv.getAddButton());
     }
-    public static MainViewController getInstance(MainView mainView){
-        if (mvc != null){
-            return mvc;
+    public static MainViewController getInstance(){
+        if (mvc == null){
+            mvc = new MainViewController();
         }
-        return new MainViewController(mainView);
+        return mvc;
     }
     public  void setTestActionListener(JButton button){
         button.addActionListener(new ActionListener() {
@@ -52,7 +52,8 @@ public class MainViewController implements Observer{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddView.openFrame();
+                AddView av= AddView.getInstance();
+                av.openFrame();
             }
         });
     }
@@ -60,7 +61,7 @@ public class MainViewController implements Observer{
     public void update(){
         JList<String> jlist = mv.getJlist();
         int n=200;
-        BookModel bm=BookModel.getInstance(this);
+        BookModel bm=BookModel.getInstance();
         List<ShortBook> books;
         String[] arr=new String[n];
         try{
