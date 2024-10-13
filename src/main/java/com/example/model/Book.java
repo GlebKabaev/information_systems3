@@ -1,6 +1,6 @@
 package com.example.model;
-
-
+import java.util.Map;
+import java.util.HashMap;
 
 public class Book extends ShortBook {
     
@@ -125,6 +125,25 @@ public class Book extends ShortBook {
         }
         return number;
     }
-   
+    public static Book toBook(String jsonString) {
+        Map<String, String> map = new HashMap<>();
+        jsonString = jsonString.replace("{", "").replace("}", "").replace("\"", "");
+        String[] pairs = jsonString.split(",");
+
+        for (String pair : pairs) {
+            String[] keyValue = pair.split(":");
+            map.put(keyValue[0].trim(), keyValue[1].trim());
+        }
+
+        int id = Integer.parseInt(map.get("id"));
+        String title = map.get("title");
+        String author = map.get("author");
+        String genere = map.get("genere");
+        int quantity = Integer.parseInt(map.get("quantity"));
+        double depositAmount = Double.parseDouble(map.get("depositAmount"));
+        double rentalCost = Double.parseDouble(map.get("rentalCost"));
+
+        return new Book(id, title, author, genere, quantity, depositAmount, rentalCost);
+    }
     
 }

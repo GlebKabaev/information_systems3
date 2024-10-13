@@ -1,19 +1,21 @@
 package com.example.app;
 
-import java.util.*;
+// import java.util.*;
 
 
 
-import javax.swing.JFrame;
+// import javax.swing.JFrame;
 
 import com.example.controller.AddViewController;
 import com.example.controller.MainViewController;
-import com.example.model.Book;
-import com.example.model.BookModel;
-import com.example.model.ShortBook;
-import com.example.model.repository.Book_rep_DB;
+import com.example.controller.UpdateViewController;
+// import com.example.model.Book;
+// import com.example.model.BookModel;
+// import com.example.model.ShortBook;
+// import com.example.model.repository.Book_rep_DB;
 import com.example.view.AddView;
 import com.example.view.MainView;
+import com.example.view.UpdateView;
 
 
 public class App {
@@ -21,8 +23,11 @@ public class App {
 
         MainView mv= MainView.getInstance();
         AddView av = AddView.getInstance();
+        UpdateView uv= UpdateView.getInstance();
         MainViewController mvc= MainViewController.getInstance();
         AddViewController avc= AddViewController.getInstance();
+        UpdateViewController uvc= UpdateViewController.getInstance();
+
 
         mv.openFrame();
 

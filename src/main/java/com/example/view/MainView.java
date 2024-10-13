@@ -12,6 +12,7 @@ public class MainView  {
     private JButton button=new JButton("Test");
     private JButton getButton = new JButton("Get Books"); 
     private JButton addButton = new JButton("Добавить книгу");
+    private JButton updateButton =new JButton("Изменить книгу");
     
     
     // public void update(ArrayList<String> newInfo) {
@@ -37,6 +38,9 @@ public class MainView  {
         //addButton
         addButton.setBounds(470, 80, 200, 30);
         frame.add(addButton);
+        //updateButton
+        updateButton.setBounds(50, 120, 200, 30);
+        frame.add(updateButton);
         //jlist
         jlist.setBounds(50,180, 900, 900);
         frame.add(jlist); 
@@ -73,6 +77,9 @@ public class MainView  {
     public JButton getAddButton() {
         return addButton;
     }
+    public JButton getUpdateButton() {
+        return updateButton;
+    }
     //setters
     public void setLabel(String text) {
         label.setText(text);
@@ -92,6 +99,9 @@ public class MainView  {
     }
     public void setAddButton(JButton newAddButton) {
         addButton = newAddButton;
+    }
+    public void setupdateButton(JButton newUpdateButton){
+        updateButton = newUpdateButton;
     }
     
 }
