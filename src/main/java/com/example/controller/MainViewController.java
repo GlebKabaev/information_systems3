@@ -56,6 +56,7 @@ public class MainViewController implements Observer{
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddView av= AddView.getInstance();
+                AddViewController avc = AddViewController.getInstance();
                 av.openFrame();
             }
         });
@@ -66,6 +67,7 @@ public class MainViewController implements Observer{
             @Override
             public void actionPerformed(ActionEvent e) {
                 UpdateView updateView= UpdateView.getInstance();
+                UpdateViewController updateViewController= UpdateViewController.getInstance();
                 updateView.openFrame();
             }
         });

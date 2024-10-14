@@ -22,11 +22,11 @@ public class App {
     public static void main(String[] args) {
 
         MainView mv= MainView.getInstance();
-        AddView av = AddView.getInstance();
-        UpdateView uv= UpdateView.getInstance();
+        //AddView av = AddView.getInstance();
+       // UpdateView uv= UpdateView.getInstance();
         MainViewController mvc= MainViewController.getInstance();
-        AddViewController avc= AddViewController.getInstance();
-        UpdateViewController uvc= UpdateViewController.getInstance();
+       // AddViewController avc= AddViewController.getInstance();
+        //UpdateViewController uvc= UpdateViewController.getInstance();
 
 
         mv.openFrame();
