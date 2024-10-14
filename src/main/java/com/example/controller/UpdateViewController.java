@@ -4,14 +4,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.example.model.Book;
 import com.example.model.BookModel;
-import com.example.view.UpdateView;
+import com.example.view.UpdateAddView;
 import com.example.view.MainView;
 public class UpdateViewController {
     private static UpdateViewController uvc;
-    private UpdateView uv= UpdateView.getInstance();
+    private UpdateAddView updateAddView= UpdateAddView.getInstance();
     private MainView mv= MainView.getInstance();
     private UpdateViewController(){
-        setUpdateBookActionListener(uv.getButton());
+        setUpdateBookActionListener(updateAddView.getButton());
     }
     public static UpdateViewController getInstance(){
         if(uvc==null){
@@ -23,6 +23,7 @@ public class UpdateViewController {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 String stringBook="";
                 int id;
                 try{
@@ -36,15 +37,15 @@ public class UpdateViewController {
                 
                 }catch(Exception err){
                     JOptionPane.showMessageDialog(null, "Выберите книгу из списка!");
-                    uv.getFrame().dispose();
+                    updateAddView.getFrame().dispose();
                     return;
                 }
-                String title =uv.getTitle().getText();
-                String author = uv.getAuthor().getText();
-                String genere = uv.getGenere().getText();
-                int quantity = Integer.parseInt(uv.getQuantity().getText());
-                double depositAmount = Double.parseDouble(uv.getDepositAmount().getText());
-                double rentalCost=Double.parseDouble(uv.getRentalCost().getText());
+                String title =updateAddView.getTitle().getText();
+                String author = updateAddView.getAuthor().getText();
+                String genere = updateAddView.getGenere().getText();
+                int quantity = Integer.parseInt(updateAddView.getQuantity().getText());
+                double depositAmount = Double.parseDouble(updateAddView.getDepositAmount().getText());
+                double rentalCost=Double.parseDouble(updateAddView.getRentalCost().getText());
                 Book book=new Book(id,title,author,genere,quantity,depositAmount,rentalCost);
                 BookModel bm=BookModel.getInstance();
                 bm.updateBookById(id, book);

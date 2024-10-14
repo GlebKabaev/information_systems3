@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.util.*;
 import com.example.view.MainView;
 import com.example.view.UpdateView;
-
+import com.example.view.UpdateAddView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -55,9 +55,14 @@ public class MainViewController implements Observer{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddView av= AddView.getInstance();
-                AddViewController avc = AddViewController.getInstance();
-                av.openFrame();
+                UpdateAddView updateAddView= UpdateAddView.getInstance();
+                updateAddView.getFrame().setTitle("Add Book");
+                for (ActionListener al : updateAddView.getButton().getActionListeners()) {
+                    updateAddView.getButton().removeActionListener(al);
+                }
+                AddViewController addViewController = AddViewController.getInstance();
+                addViewController.setAddBookActionListener(updateAddView.getButton());
+                updateAddView.openFrame();
             }
         });
     }
@@ -66,9 +71,14 @@ public class MainViewController implements Observer{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UpdateView updateView= UpdateView.getInstance();
+                UpdateAddView updateAddView= UpdateAddView.getInstance();
+                updateAddView.getFrame().setTitle("Update Book");
+                for (ActionListener al : updateAddView.getButton().getActionListeners()) {
+                    updateAddView.getButton().removeActionListener(al);
+                }
                 UpdateViewController updateViewController= UpdateViewController.getInstance();
-                updateView.openFrame();
+                updateViewController.setUpdateBookActionListener(updateAddView.getButton());
+                updateAddView.openFrame();
             }
         });
     }

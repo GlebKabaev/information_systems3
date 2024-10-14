@@ -1,10 +1,10 @@
 package com.example.view;
-import java.util.List;
+
 
 import javax.swing.*;
 public class UpdateAddView {
     private static UpdateAddView updateAddView;
-    private JFrame frame = new JFrame("Изменить книгу");
+    private JFrame frame = new JFrame("");
     private JButton button = new JButton("Подтвердить");
     private JTextField title = new JTextField("введите title");
     private JTextField author = new JTextField("введите author");
@@ -12,7 +12,7 @@ public class UpdateAddView {
     private JTextField quantity = new JTextField("введите quantity");
     private JTextField depositAmount = new JTextField("введите depositAmount");
     private JTextField rentalCost = new JTextField("введите rentalCost");
-    
+
     private UpdateAddView(){
         //frame
         frame.setSize(700, 700);

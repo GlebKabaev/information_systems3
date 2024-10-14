@@ -21,7 +21,7 @@ public class BookModel implements Observable{
 
     public  void addBook(Book book){
         db.addBook(book);
-        System.out.println("Добавляем книгу: " + book); // Для отладки
+        
         notifyObservers();
     }
     public void updateBookById(int id,Book book){
