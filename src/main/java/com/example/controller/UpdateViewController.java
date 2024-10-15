@@ -26,12 +26,13 @@ public class UpdateViewController {
                 
                 String stringBook="";
                 int id;
+                BookModel bm=BookModel.getInstance();
+               
                 try{
                 stringBook=mv.getJlist().getSelectedValue();
                 // Найдем индекс начала и конца значения id
                 int idStart = stringBook.indexOf("id='") + 4;  // 4 символа после "id='"
-                int idEnd = stringBook.indexOf("'", idStart);  // Найдем следующую одинарную кавычку после id
-
+                int idEnd = stringBook.indexOf("'", idStart);  // Найдем следующую одинарную кавычку после id 
                 // Извлекаем значение id
                 id=Integer.parseInt(stringBook.substring(idStart, idEnd));
                 
@@ -47,7 +48,7 @@ public class UpdateViewController {
                 double depositAmount = Double.parseDouble(updateAddView.getDepositAmount().getText());
                 double rentalCost=Double.parseDouble(updateAddView.getRentalCost().getText());
                 Book book=new Book(id,title,author,genere,quantity,depositAmount,rentalCost);
-                BookModel bm=BookModel.getInstance();
+                
                 bm.updateBookById(id, book);
             }
         });

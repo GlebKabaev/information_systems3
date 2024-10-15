@@ -1,4 +1,5 @@
 package com.example.controller;
+import com.example.model.Book;
 import com.example.model.BookModel;
 import com.example.model.ShortBook;
 
@@ -71,6 +72,7 @@ public class MainViewController implements Observer{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 UpdateAddView updateAddView= UpdateAddView.getInstance();
                 updateAddView.getFrame().setTitle("Update Book");
                 for (ActionListener al : updateAddView.getButton().getActionListeners()) {
@@ -78,6 +80,29 @@ public class MainViewController implements Observer{
                 }
                 UpdateViewController updateViewController= UpdateViewController.getInstance();
                 updateViewController.setUpdateBookActionListener(updateAddView.getButton());
+                String stringBook="";
+                int id;
+                BookModel bm=BookModel.getInstance();
+                Book oldBook;
+                try{
+                stringBook=mv.getJlist().getSelectedValue();
+                // Найдем индекс начала и конца значения id
+                int idStart = stringBook.indexOf("id='") + 4;  // 4 символа после "id='"
+                int idEnd = stringBook.indexOf("'", idStart);  // Найдем следующую одинарную кавычку после id 
+                // Извлекаем значение id
+                id=Integer.parseInt(stringBook.substring(idStart, idEnd));
+                oldBook=bm.getBookById(id);
+                updateAddView.getTitle().setText(oldBook.getTitle());
+                updateAddView.getAuthor().setText(oldBook.getAuthor());
+                updateAddView.getGenere().setText(oldBook.getGenere());
+                updateAddView.getQuantity().setText(String.valueOf(oldBook.getQuantity()));
+                updateAddView.getDepositAmount().setText(String.valueOf(oldBook.getDepositAmount()));
+                updateAddView.getRentalCost().setText(String.valueOf(oldBook.getRentalCost()));
+                }catch(Exception err){
+                    JOptionPane.showMessageDialog(null, "Выберите книгу из списка!");
+                    updateAddView.getFrame().dispose();
+                    return;
+                }
                 updateAddView.openFrame();
             }
         });
