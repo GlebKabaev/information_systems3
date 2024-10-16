@@ -6,12 +6,12 @@ import com.example.model.Book;
 import com.example.model.BookModel;
 import com.example.view.UpdateAddView;
 import com.example.view.MainView;
-public class UpdateViewController {
+public class UpdateViewController implements Controller {
     private static UpdateViewController uvc;
     private UpdateAddView updateAddView= UpdateAddView.getInstance();
     private MainView mv= MainView.getInstance();
     private UpdateViewController(){
-        setUpdateBookActionListener(updateAddView.getButton());
+        //setUpdateBookActionListener(updateAddView.getButton());
     }
     public static UpdateViewController getInstance(){
         if(uvc==null){
@@ -19,7 +19,7 @@ public class UpdateViewController {
         }
         return uvc;
     }
-    public  void setUpdateBookActionListener(JButton button){
+    public  void setActionListener(JButton button){
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

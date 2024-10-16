@@ -2,15 +2,21 @@ package com.example.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import com.example.factory.view.UpdateAddViewFactory;
+import com.example.factory.view.ViewFactory;
 import com.example.model.Book;
 import com.example.model.BookModel;
 import com.example.view.AddView;
 import com.example.view.UpdateAddView;
-public class AddViewController {
+import com.example.view.View;
+public class AddViewController implements Controller {
 private static AddViewController avc;
-private UpdateAddView updateAddView= UpdateAddView.getInstance();
+private ViewFactory viewFactory;
+private View updateAddView;
 private AddViewController(){
-    setAddBookActionListener(updateAddView.getButton());
+    viewFactory=UpdateAddViewFactory.getInstance();
+    updateAddView= viewFactory.create();
 }
 public static AddViewController getInstance(){
     if(avc==null){
@@ -18,7 +24,7 @@ public static AddViewController getInstance(){
     }
     return avc;
 }
-public  void setAddBookActionListener(JButton button){
+public  void setActionListener(JButton button){
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

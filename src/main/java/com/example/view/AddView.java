@@ -2,7 +2,7 @@
 package com.example.view;
 import javax.swing.*;
 
-public class AddView {
+public class AddView implements View {
     private static AddView addView;
     private JFrame frame = new JFrame("Добавить книгу");
     private JTextField title = new JTextField("title");
@@ -11,7 +11,7 @@ public class AddView {
     private JTextField quantity = new JTextField("quantity");
     private JTextField depositAmount = new JTextField("depositAmount");
     private JTextField rentalCost = new JTextField("rentalCost");
-    private JButton addButton = new JButton("Добавить книгу");
+    private JButton button = new JButton("Добавить книгу");
 
     private AddView() {
         // frame
@@ -36,8 +36,8 @@ public class AddView {
         rentalCost.setBounds(50, 300, 200, 30);
         frame.add(rentalCost);
         //addButton
-        addButton.setBounds(260, 300, 200, 30);
-        frame.add(addButton);
+        button.setBounds(260, 300, 200, 30);
+        frame.add(button);
     }
 
     //синглтон
@@ -51,6 +51,12 @@ public class AddView {
         frame.setVisible(true);
     }
     //getters
+    public JFrame getFrame() {
+        return frame;
+    }
+    public JButton getButton(){
+        return button;
+    }
     public JTextField getTitle() {
         return title;
     }
@@ -68,9 +74,6 @@ public class AddView {
     }
     public JTextField getRentalCost() {
         return rentalCost;
-    }
-    public JButton getAddButton() {
-        return addButton;
     }
     //setters
     public void setTitle(String title) {
@@ -92,6 +95,9 @@ public class AddView {
         this.rentalCost.setText(rentalCost);
     }
     public void setAddButton(JButton addButton) {
-        this.addButton = addButton;
+        this.button = addButton;
+    }
+    public void setButton(JButton button){
+        this.button=button;
     }
 }

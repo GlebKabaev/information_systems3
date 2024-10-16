@@ -2,7 +2,7 @@ package com.example.view;
 
 
 import javax.swing.*;
-public class UpdateView {
+public class UpdateView implements View {
     private static UpdateView updateView;
     private JFrame frame = new JFrame("Изменить книгу");
     private JButton button = new JButton("Подтвердить");

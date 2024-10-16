@@ -1,19 +1,20 @@
 package com.example.controller;
+import com.example.factory.view.UpdateAddViewFactory;
+import com.example.factory.view.ViewFactory;
+import com.example.factory.controller.*;
 import com.example.model.Book;
 import com.example.model.BookModel;
 import com.example.model.ShortBook;
-
-import com.example.view.AddView;
-
 import javax.swing.*;
 import java.util.*;
 import com.example.view.MainView;
-import com.example.view.UpdateView;
-import com.example.view.UpdateAddView;
+import com.example.view.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainViewController implements Observer{
+    private ViewFactory viewFactory;
+    private ControllerFactory controllerFactory;
     private MainView mv=MainView.getInstance();
     private static MainViewController mvc;
 
@@ -56,13 +57,15 @@ public class MainViewController implements Observer{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UpdateAddView updateAddView= UpdateAddView.getInstance();
+                viewFactory=UpdateAddViewFactory.getInstance();
+                View updateAddView= viewFactory.create();
                 updateAddView.getFrame().setTitle("Add Book");
                 for (ActionListener al : updateAddView.getButton().getActionListeners()) {
                     updateAddView.getButton().removeActionListener(al);
                 }
-                AddViewController addViewController = AddViewController.getInstance();
-                addViewController.setAddBookActionListener(updateAddView.getButton());
+                controllerFactory = AddViewControllerFactory.getInstance();
+                Controller addViewController = controllerFactory.create();
+                addViewController.setActionListener(updateAddView.getButton());
                 updateAddView.openFrame();
             }
         });
@@ -73,13 +76,15 @@ public class MainViewController implements Observer{
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                UpdateAddView updateAddView= UpdateAddView.getInstance();
+                viewFactory=UpdateAddViewFactory.getInstance();
+                controllerFactory=UpdateViewControllerFactory.getInstance();
+                View updateAddView= viewFactory.create();
                 updateAddView.getFrame().setTitle("Update Book");
                 for (ActionListener al : updateAddView.getButton().getActionListeners()) {
                     updateAddView.getButton().removeActionListener(al);
                 }
-                UpdateViewController updateViewController= UpdateViewController.getInstance();
-                updateViewController.setUpdateBookActionListener(updateAddView.getButton());
+                Controller updateViewController= controllerFactory.create();
+                updateViewController.setActionListener(updateAddView.getButton());
                 String stringBook="";
                 int id;
                 BookModel bm=BookModel.getInstance();
