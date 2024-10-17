@@ -13,6 +13,10 @@ public class MainView  {
     private JButton getButton = new JButton("Get Books"); 
     private JButton addButton = new JButton("Добавить книгу");
     private JButton updateButton =new JButton("Изменить книгу");
+    private JButton next =new JButton(">");
+    private JButton back =new JButton("<");
+    private JLabel numPage = new JLabel("1");
+
     
     
     // public void update(ArrayList<String> newInfo) {
@@ -42,8 +46,17 @@ public class MainView  {
         updateButton.setBounds(50, 120, 200, 30);
         frame.add(updateButton);
         //jlist
-        jlist.setBounds(50,180, 900, 900);
+        jlist.setBounds(50,180, 520, 520);
         frame.add(jlist); 
+        //backButton
+        back.setBounds(200+70, 700, 50, 30);
+        frame.add(back);
+        //nextButton
+        next.setBounds(200+170, 700, 50, 30);
+        frame.add(next);
+        //numPage
+        numPage.setBounds(200+140, 700, 40, 40);
+        frame.add(numPage);
     }
     public void openFrame() {
         frame.setVisible(true);
@@ -80,6 +93,15 @@ public class MainView  {
     public JButton getUpdateButton() {
         return updateButton;
     }
+    public JButton getNext() {
+        return next;
+    }
+    public JButton getBack() {
+        return back;
+    }
+    public JLabel getNumPage(){
+        return numPage;
+    }
     //setters
     public void setLabel(String text) {
         label.setText(text);
@@ -102,6 +124,15 @@ public class MainView  {
     }
     public void setupdateButton(JButton newUpdateButton){
         updateButton = newUpdateButton;
+    }
+    public void setNext(JButton newNext){
+        next = newNext;
+    }
+    public void setBack(JButton newBack){
+        back = newBack;
+    }
+    public void setNumPage(int numPage){
+        this.numPage.setText(String.valueOf(numPage));
     }
     
 }

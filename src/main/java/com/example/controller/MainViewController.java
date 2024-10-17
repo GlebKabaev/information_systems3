@@ -23,6 +23,8 @@ public class MainViewController implements Observer{
         setGetActionListener(mv.getGetButton());
         setAddActionListener(mv.getAddButton());
         setUpdateActionListener(mv.getUpdateButton());
+        setNextActionListener(mv.getNext());
+        setBackActionListener(mv.getBack());
     }
     public static MainViewController getInstance(){
         if (mvc == null){
@@ -70,7 +72,7 @@ public class MainViewController implements Observer{
             }
         });
     }
-    private  void setUpdateActionListener(JButton button){
+    private void setUpdateActionListener(JButton button){
 
         button.addActionListener(new ActionListener() {
             @Override
@@ -112,16 +114,39 @@ public class MainViewController implements Observer{
             }
         });
     }
-
+    private void setNextActionListener(JButton button){
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int k=Integer.parseInt(mv.getNumPage().getText());
+                k++;
+                mv.setNumPage(k);
+                update();
+            }
+        });
+    }
+    private void setBackActionListener(JButton button){
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int k=Integer.parseInt(mv.getNumPage().getText());
+                k--;
+                if(k<1) k=1;
+                mv.setNumPage(k);
+                update();
+            }
+        });
+    }
     public void update(){
         JList<String> jlist = mv.getJlist();
-        int n=200;
+        int n=30;
+        int k=Integer.parseInt(mv.getNumPage().getText());
         BookModel bm=BookModel.getInstance();
         List<ShortBook> books;
         String[] arr=new String[n];
         try{
         
-            books=bm.get_k_n_shortList(0, n);
+            books=bm.get_k_n_shortList(k-1, n);
             for(int i=0; i<books.size(); i++){
                 arr[i]=books.get(i).toString();
             }
