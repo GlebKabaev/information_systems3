@@ -25,6 +25,7 @@ public class MainViewController implements Observer{
         setUpdateActionListener(mv.getUpdateButton());
         setNextActionListener(mv.getNext());
         setBackActionListener(mv.getBack());
+        
     }
     public static MainViewController getInstance(){
         if (mvc == null){

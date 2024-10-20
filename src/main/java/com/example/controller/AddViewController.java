@@ -14,6 +14,7 @@ public class AddViewController implements Controller {
 private static AddViewController avc;
 private ViewFactory viewFactory;
 private View updateAddView;
+private BookModel bm=BookModel.getInstance();
 private AddViewController(){
     viewFactory=UpdateAddViewFactory.getInstance();
     updateAddView= viewFactory.create();
@@ -36,7 +37,6 @@ public  void setActionListener(JButton button){
             double depositAmount = Double.parseDouble(updateAddView.getDepositAmount().getText());
             double rentalCost = Double.parseDouble(updateAddView.getRentalCost().getText());
             Book book=new Book(quantity, title, author, genere, quantity, depositAmount, rentalCost);
-            BookModel bm=BookModel.getInstance();
             bm.addBook(book);
             
             }
