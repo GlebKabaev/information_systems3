@@ -8,8 +8,7 @@ public class MainView  {
     private JFrame frame = new JFrame("Главное окно");
     private JLabel label = new JLabel("Welcome");
     private JList<String> jlist=new JList<>() ;
-    private JTextField textField = new JTextField();
-    private JButton button=new JButton("Test");
+    private JButton button=new JButton("Show full book info");
     private JButton getButton = new JButton("Get Books"); 
     private JButton addButton = new JButton("Добавить книгу");
     private JButton updateButton =new JButton("Изменить книгу");
@@ -31,8 +30,7 @@ public class MainView  {
         label.setBounds(50, 150, 200, 30);
         frame.add(label); 
         // textField
-        textField.setBounds(50, 30, 200, 30); 
-        frame.add(textField);
+        ;
         // button
         button.setBounds(50, 80, 200, 30); 
         frame.add(button);
@@ -78,9 +76,7 @@ public class MainView  {
     public JList<String> getJlist() {
         return jlist;
     }
-    public JTextField getTextField() {
-        return textField;
-    }
+    
     public JButton getButton() {
         return button;
     }
@@ -109,10 +105,7 @@ public class MainView  {
     public void setJlist(List<String> newInfo) {
         jlist.setListData(newInfo.toArray(new String[0]));
     }
-    public void setTextField(String text) {
-
-        textField.setText(text);
-    }
+    
     public void setButton(JButton newButton) {
         button = newButton;
     }
