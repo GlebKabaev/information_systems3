@@ -1,4 +1,4 @@
-package com.example.model.repository;
+package com.example.repository;
 import java.sql.*;
 import java.util.*;
 

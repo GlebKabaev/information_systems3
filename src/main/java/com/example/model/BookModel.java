@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.controller.MainViewController;
-import com.example.model.repository.*;
+import com.example.repository.*;
 public class BookModel implements Observable{
     private static BookModel bm;
     private Book_rep_DB db= Book_rep_DB.getInstance();
