@@ -7,7 +7,7 @@ public class AddView implements View {
     private JFrame frame = new JFrame("Добавить книгу");
     private JTextField title = new JTextField("title");
     private JTextField author = new JTextField("author");
-    private JTextField genere = new JTextField("genere");
+    private JTextField genre = new JTextField("genre");
     private JTextField quantity = new JTextField("quantity");
     private JTextField depositAmount = new JTextField("depositAmount");
     private JTextField rentalCost = new JTextField("rentalCost");
@@ -23,9 +23,9 @@ public class AddView implements View {
         // author
         author.setBounds(50, 100, 200, 30);
         frame.add(author);
-        // genere
-        genere.setBounds(50, 150, 200, 30);
-        frame.add(genere);
+        // genre
+        genre.setBounds(50, 150, 200, 30);
+        frame.add(genre);
         // quantity
         quantity.setBounds(50, 200, 200, 30);
         frame.add(quantity);
@@ -63,8 +63,8 @@ public class AddView implements View {
     public JTextField getAuthor() {
         return author;
     }
-    public JTextField getGenere() {
-        return genere;
+    public JTextField getGenre() {
+        return genre;
     }
     public JTextField getQuantity() {
         return quantity;
@@ -82,8 +82,8 @@ public class AddView implements View {
     public void setAuthor(String author) {
         this.author.setText(author);
     }
-    public void setGenere(String genere) {
-        this.genere.setText(genere);
+    public void setGenre(String genre) {
+        this.genre.setText(genre);
     }
     public void setQuantity(String quantity) {
         this.quantity.setText(quantity);

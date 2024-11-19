@@ -6,10 +6,10 @@ public class ShortBook {
     private int id;
     private String title;
     private String author;
-    private String genere;
+    private String genre;
     
     //Constructor
-    public ShortBook(int id,String title, String author, String genere) {
+    public ShortBook(int id,String title, String author, String genre) {
         this.title = title;
         if(isValidID(id)){
             this.id = id;
@@ -19,8 +19,8 @@ public class ShortBook {
         } else {
             throw new IllegalArgumentException("Author name is invalid.");
         }
-        if(validateString(genere)){
-            this.genere = genere;
+        if(validateString(genre)){
+            this.genre = genre;
         } else {
             throw new IllegalArgumentException("Genre name is invalid.");
         }
@@ -51,9 +51,9 @@ public class ShortBook {
                         throw new IllegalArgumentException("Author name is invalid.");
                     }
                     break;
-                case "genere":
+                case "genre":
                     if (validateString(value)) {
-                        this.genere = value;
+                        this.genre = value;
                     } else {
                         throw new IllegalArgumentException("Genre name is invalid.");
                     }
@@ -79,12 +79,12 @@ public class ShortBook {
             throw new IllegalArgumentException("Author name is invalid.");
         }
     }
-    public String getGenere() {
-        return genere;
+    public String getGenre() {
+        return genre;
     }
-    public void setGenere(String genere) {
-        if(validateString(genere)){
-            this.genere = genere;
+    public void setGenre(String genre) {
+        if(validateString(genre)){
+            this.genre = genre;
         } else {
             throw new IllegalArgumentException("Genre name is invalid.");
         }
@@ -105,7 +105,7 @@ public class ShortBook {
                 "id='" + id + '\'' +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", genere='" + genere + '\''+"}";
+                ", genre='" + genre + '\''+"}";
                 
     }
     

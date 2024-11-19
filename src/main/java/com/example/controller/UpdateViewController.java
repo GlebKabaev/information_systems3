@@ -43,11 +43,11 @@ public class UpdateViewController implements Controller {
                 }
                 String title =updateAddView.getTitle().getText();
                 String author = updateAddView.getAuthor().getText();
-                String genere = updateAddView.getGenere().getText();
+                String genre = updateAddView.getGenre().getText();
                 int quantity = Integer.parseInt(updateAddView.getQuantity().getText());
                 double depositAmount = Double.parseDouble(updateAddView.getDepositAmount().getText());
                 double rentalCost=Double.parseDouble(updateAddView.getRentalCost().getText());
-                Book book=new Book(id,title,author,genere,quantity,depositAmount,rentalCost);
+                Book book=new Book(id,title,author,genre,quantity,depositAmount,rentalCost);
                 
                 bm.updateBookById(id, book);
             }

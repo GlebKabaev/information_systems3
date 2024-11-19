@@ -6,7 +6,7 @@ public class FullInfoView {
     private JLabel id = new JLabel();
     private JLabel title = new JLabel();
     private JLabel author = new JLabel();
-    private JLabel genere = new JLabel();
+    private JLabel genre = new JLabel();
     private JLabel quantity = new JLabel();
     private JLabel depositAmount = new JLabel();
     private JLabel rentalCost = new JLabel();
@@ -22,8 +22,8 @@ public class FullInfoView {
         frame.add(title);
         author.setBounds(50, 150, 200, 30);
         frame.add(author);
-        genere.setBounds(50, 200, 200, 30);
-        frame.add(genere);
+        genre.setBounds(50, 200, 200, 30);
+        frame.add(genre);
         quantity.setBounds(50, 250, 200, 30);
         frame.add(quantity);
         depositAmount.setBounds(50, 300, 200, 30);
@@ -50,8 +50,8 @@ public class FullInfoView {
     public JLabel getAuthor() {
         return author;
     }
-    public JLabel getGenere(){
-        return genere;
+    public JLabel getGenre(){
+        return genre;
     }
     public JLabel getQuantity() {
         return quantity;
@@ -72,8 +72,8 @@ public class FullInfoView {
     public void setAuthor(String author) {
         this.author.setText(author);
     }
-    public void setGenere(String genere) {
-        this.genere.setText(genere);
+    public void setGenre(String genre) {
+        this.genre.setText(genre);
     }
     public void setQuantity(String quantity) {
         this.quantity.setText(quantity);

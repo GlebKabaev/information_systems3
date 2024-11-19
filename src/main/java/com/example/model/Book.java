@@ -10,11 +10,11 @@ public class Book extends ShortBook {
     public Book(int id,
                 String title,
                 String author,
-                String genere,
+                String genre,
                 int quantity,
                 double depositAmount,
                 double rentalCost) {
-        super(id,title, author, genere);
+        super(id,title, author, genre);
         this.quantity =validateNumberField(quantity);
         this.depositAmount =validateNumberField(depositAmount);
         this.rentalCost = validateNumberField(rentalCost);
@@ -24,7 +24,7 @@ public class Book extends ShortBook {
         // Убираем фигурные скобки и разделяем строку по запятым
         String[] parts = jsonData.replace("{", "").replace("}", "").replace("\"", "").split(",");
         
-        //String title = null, author = null, genere = null;
+        //String title = null, author = null, genre = null;
         
         int quantity = 0;
         double depositAmount = 0.0, rentalCost = 0.0;
@@ -42,8 +42,8 @@ public class Book extends ShortBook {
                 // case "author":
                 //     author = value;
                 //     break;
-                // case "genere":
-                //     genere = value;
+                // case "genre":
+                //     genre = value;
                 //     break;
                 case "quantity":
                     quantity = Integer.parseInt(value);
@@ -99,7 +99,7 @@ public class Book extends ShortBook {
                 "\"id\": \"" + getId() + "\",\n" +
                 "\"title\": \"" + getTitle() + "\",\n" +
                 "\"author\": \"" + getAuthor() + "\",\n" +
-                "\"genere\": \"" + getGenere() + "\",\n" +
+                "\"genre\": \"" + getGenre() + "\",\n" +
                 "\"quantity\": \"" + getQuantity() + "\",\n" +
                 "\"depositAmount\": \"" + getDepositAmount() + "\",\n" +
                 "\"rentalCost\": \"" + getRentalCost() + "\"\n" +

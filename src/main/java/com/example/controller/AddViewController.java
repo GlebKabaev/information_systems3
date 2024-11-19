@@ -31,11 +31,11 @@ public  void setActionListener(JButton button){
             
             String title = updateAddView.getTitle().getText();
             String author = updateAddView.getAuthor().getText();
-            String genere = updateAddView.getGenere().getText();
+            String genre = updateAddView.getGenre().getText();
             int quantity = Integer.parseInt(updateAddView.getQuantity().getText());
             double depositAmount = Double.parseDouble(updateAddView.getDepositAmount().getText());
             double rentalCost = Double.parseDouble(updateAddView.getRentalCost().getText());
-            Book book=new Book(quantity, title, author, genere, quantity, depositAmount, rentalCost);
+            Book book=new Book(quantity, title, author, genre, quantity, depositAmount, rentalCost);
             bm.addBook(book);
             
             }

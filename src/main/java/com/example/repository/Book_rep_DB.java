@@ -42,7 +42,7 @@ public class Book_rep_DB {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
-                        rs.getString("genere"),
+                        rs.getString("genre"),
                         rs.getInt("quantity"),
                         rs.getDouble("depositAmount"),
                         rs.getDouble("rentalCost")
@@ -66,7 +66,7 @@ public class Book_rep_DB {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
-                        rs.getString("genere")
+                        rs.getString("genre")
                         
                 );
             }
@@ -76,14 +76,14 @@ public class Book_rep_DB {
         return null;
     }
     public void addBook(Book book) {
-        String query = "INSERT INTO Books (title, author, genere, quantity, depositAmount, rentalCost) VALUES (?, ?, ?, ?, ?, ?)"; // SQL-запрос для добавления книги
+        String query = "INSERT INTO Books (title, author, genre, quantity, depositAmount, rentalCost) VALUES (?, ?, ?, ?, ?, ?)"; // SQL-запрос для добавления книги
         try (Connection conn = DriverManager.getConnection(url, user, password); // Создаем соединение с базой данных
              PreparedStatement stmt = conn.prepareStatement(query)) { // Создаем подготовленный запрос
 
             // Устанавливаем значения параметров запроса
             stmt.setString(1, book.getTitle());
             stmt.setString(2, book.getAuthor());
-            stmt.setString(3, book.getGenere());
+            stmt.setString(3, book.getGenre());
             stmt.setInt(4, book.getQuantity());
             stmt.setDouble(5, book.getDepositAmount());
             stmt.setDouble(6, book.getRentalCost());
@@ -96,14 +96,14 @@ public class Book_rep_DB {
     }
     // Заменить существующую книгу по её ID
     public void updateBookById(int id, Book book) {
-        String query = "UPDATE Books SET title = ?, author = ?, genere = ?, quantity = ?, depositAmount = ?, rentalCost = ? WHERE id = ?"; // SQL-запрос для обновления книги
+        String query = "UPDATE Books SET title = ?, author = ?, genre = ?, quantity = ?, depositAmount = ?, rentalCost = ? WHERE id = ?"; // SQL-запрос для обновления книги
         try (Connection conn = DriverManager.getConnection(url, user, password); // Создаем соединение с базой данных
              PreparedStatement stmt = conn.prepareStatement(query)) { // Создаем подготовленный запрос
 
             // Устанавливаем значения параметров запроса
             stmt.setString(1, book.getTitle());
             stmt.setString(2, book.getAuthor());
-            stmt.setString(3, book.getGenere());
+            stmt.setString(3, book.getGenre());
             stmt.setInt(4, book.getQuantity());
             stmt.setDouble(5, book.getDepositAmount());
             stmt.setDouble(6, book.getRentalCost());
@@ -143,7 +143,7 @@ public class Book_rep_DB {
         return 0; // Если произошла ошибка, возвращаем 0
     }
     public List<ShortBook> get_k_n_shortList(int k, int n) throws IOException {
-        String query = "SELECT id, title, author, genere FROM Books ORDER BY id LIMIT ? OFFSET ?";
+        String query = "SELECT id, title, author, genre FROM Books ORDER BY id LIMIT ? OFFSET ?";
         List<ShortBook> shortBooks = new ArrayList<>();
     
         try (Connection conn = DriverManager.getConnection(url, user, password);
@@ -159,7 +159,7 @@ public class Book_rep_DB {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
-                        rs.getString("genere")
+                        rs.getString("genre")
                 ));
             }
         } catch (SQLException e) {

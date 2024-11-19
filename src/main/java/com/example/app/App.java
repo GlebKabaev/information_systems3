@@ -37,9 +37,9 @@ public class App {
 
         // Book_rep_DB db=Book_rep_DB.getInstance();
         // for (int i=0; i<40; i++) {
-            // db.addBook(new com.example.model.Book(i,"Book "+i,"Author ","Genere ",100,100.0,20.0));
+            // db.addBook(new com.example.model.Book(i,"Book "+i,"Author ","Genre ",100,100.0,20.0));
         // }
-    //    db.addBook(new com.example.model.Book(1,"Book "+1,"Author ","Genere ",100,100.0,20.0));
+    //    db.addBook(new com.example.model.Book(1,"Book "+1,"Author ","Genre ",100,100.0,20.0));
         // for (int i=1; i<=200; i++) {
         //     db.deleteBookById(i);
         // }

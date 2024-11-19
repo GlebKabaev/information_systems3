@@ -96,7 +96,7 @@ public class MainViewController implements Observer {
                     oldBook = bm.getBookById(id);
                     updateAddView.getTitle().setText(oldBook.getTitle());
                     updateAddView.getAuthor().setText(oldBook.getAuthor());
-                    updateAddView.getGenere().setText(oldBook.getGenere());
+                    updateAddView.getGenre().setText(oldBook.getGenre());
                     updateAddView.getQuantity().setText(String.valueOf(oldBook.getQuantity()));
                     updateAddView.getDepositAmount().setText(String.valueOf(oldBook.getDepositAmount()));
                     updateAddView.getRentalCost().setText(String.valueOf(oldBook.getRentalCost()));
@@ -156,7 +156,7 @@ public class MainViewController implements Observer {
                     fullInfoView.setId(String.valueOf(id));
                     fullInfoView.setTitle(book.getTitle());
                     fullInfoView.setAuthor(book.getAuthor());
-                    fullInfoView.setGenere(book.getGenere());
+                    fullInfoView.setGenre(book.getGenre());
                     fullInfoView.setQuantity(String.valueOf(book.getQuantity()));
                     fullInfoView.setDepositAmount(String.valueOf(book.getDepositAmount()));
                     fullInfoView.setRentalCost(String.valueOf(book.getRentalCost()));
