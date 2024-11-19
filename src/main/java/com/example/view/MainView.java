@@ -12,6 +12,7 @@ public class MainView  {
     private JButton getButton = new JButton("Get Books"); 
     private JButton addButton = new JButton("Добавить книгу");
     private JButton updateButton =new JButton("Изменить книгу");
+    private JButton deleteButton = new JButton("Удалить книгу");
     private JButton next =new JButton(">");
     private JButton back =new JButton("<");
     private JLabel numPage = new JLabel("1");
@@ -43,6 +44,9 @@ public class MainView  {
         //updateButton
         updateButton.setBounds(50, 120, 200, 30);
         frame.add(updateButton);
+        //deleteButton
+        deleteButton.setBounds(260,120,200,30);
+        frame.add(deleteButton);
         //jlist
         jlist.setBounds(50,180, 520, 520);
         frame.add(jlist); 
@@ -89,6 +93,9 @@ public class MainView  {
     public JButton getUpdateButton() {
         return updateButton;
     }
+    public JButton getDeleteButton() {
+        return deleteButton;
+    }
     public JButton getNext() {
         return next;
     }
@@ -127,5 +134,9 @@ public class MainView  {
     public void setNumPage(int numPage){
         this.numPage.setText(String.valueOf(numPage));
     }
+    public void setDeleteButton(JButton newDeleteButton){
+        deleteButton = newDeleteButton;
+    }
+    
     
 }

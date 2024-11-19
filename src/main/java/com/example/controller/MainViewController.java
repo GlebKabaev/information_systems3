@@ -29,6 +29,7 @@ public class MainViewController implements Observer {
         setUpdateActionListener(mainView.getUpdateButton());
         setNextActionListener(mainView.getNext());
         setBackActionListener(mainView.getBack());
+        setDeleteActionListener(mainView.getDeleteButton());
 
     }
 
@@ -51,9 +52,7 @@ public class MainViewController implements Observer {
 
     private void setAddActionListener(JButton button) {
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        button.addActionListener(e->{
                 viewFactory = UpdateAddViewFactory.getInstance();
                 View updateAddView = viewFactory.create();
                 updateAddView.getFrame().setTitle("Add Book");
@@ -64,6 +63,25 @@ public class MainViewController implements Observer {
                 Controller addViewController = controllerFactory.create();
                 addViewController.setActionListener(updateAddView.getButton());
                 updateAddView.openFrame();
+            });
+        }
+    //cool lambda func
+    private void setDeleteActionListener(JButton button) {
+        button.addActionListener(e->{
+            BookModel bm = BookModel.getInstance();
+            
+            try {
+                String stringBook = mainView.getJlist().getSelectedValue();
+                    // Найдем индекс начала и конца значения id
+                    int idStart = stringBook.indexOf("id='") + 4; // 4 символа после "id='"
+                    int idEnd = stringBook.indexOf("'", idStart); // Найдем следующую одинарную кавычку после id
+                    // Извлекаем значение id
+                   int id = Integer.parseInt(stringBook.substring(idStart, idEnd));
+            bm.deleteBookById(id);
+            } catch (Exception err) {
+                JOptionPane.showMessageDialog(null, "Выберите книгу из списка!");
+                    
+                    return;
             }
         });
     }
