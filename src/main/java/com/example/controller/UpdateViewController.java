@@ -2,13 +2,17 @@ package com.example.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import com.example.factory.view.UpdateAddViewFactory;
+import com.example.factory.view.ViewFactory;
 import com.example.model.Book;
 import com.example.model.BookModel;
 import com.example.view.UpdateAddView;
+import com.example.view.View;
 import com.example.view.MainView;
 public class UpdateViewController implements Controller {
     private static UpdateViewController uvc;
-    private UpdateAddView updateAddView= UpdateAddView.getInstance();
+    private ViewFactory viewFactory;
     private MainView mv= MainView.getInstance();
     private UpdateViewController(){
         //setUpdateBookActionListener(updateAddView.getButton());
@@ -23,7 +27,8 @@ public class UpdateViewController implements Controller {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                viewFactory = UpdateAddViewFactory.getInstance();
+                View updateAddView = viewFactory.create();
                 String stringBook="";
                 int id;
                 BookModel bm=BookModel.getInstance();

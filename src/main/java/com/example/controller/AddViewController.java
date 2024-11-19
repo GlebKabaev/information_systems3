@@ -10,7 +10,7 @@ import com.example.model.BookModel;
 
 import com.example.view.View;
 public class AddViewController implements Controller {
-private static AddViewController avc;
+private static AddViewController addViewController;
 private ViewFactory viewFactory;
 private View updateAddView;
 private BookModel bm=BookModel.getInstance();
@@ -19,10 +19,10 @@ private AddViewController(){
     updateAddView= viewFactory.create();
 }
 public static AddViewController getInstance(){
-    if(avc==null){
-        avc=new AddViewController();
+    if(addViewController==null){
+        addViewController=new AddViewController();
     }
-    return avc;
+    return addViewController;
 }
 public  void setActionListener(JButton button){
         button.addActionListener(new ActionListener() {

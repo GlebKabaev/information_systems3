@@ -18,16 +18,17 @@ import java.awt.event.ActionListener;
 public class MainViewController implements Observer {
     private ViewFactory viewFactory;
     private ControllerFactory controllerFactory;
-    private MainView mv = MainView.getInstance();
+    private MainView mainView = MainView.getInstance();
+    
     private static MainViewController mvc;
 
     private MainViewController() {
-        setGetFullInfoActionListener(mv.getButton());
-        setGetActionListener(mv.getGetButton());
-        setAddActionListener(mv.getAddButton());
-        setUpdateActionListener(mv.getUpdateButton());
-        setNextActionListener(mv.getNext());
-        setBackActionListener(mv.getBack());
+        setGetFullInfoActionListener(mainView.getButton());
+        setGetActionListener(mainView.getGetButton());
+        setAddActionListener(mainView.getAddButton());
+        setUpdateActionListener(mainView.getUpdateButton());
+        setNextActionListener(mainView.getNext());
+        setBackActionListener(mainView.getBack());
 
     }
 
@@ -42,7 +43,7 @@ public class MainViewController implements Observer {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO пагинацию бы
+                
                 update();
             }
         });
@@ -87,7 +88,7 @@ public class MainViewController implements Observer {
                 BookModel bm = BookModel.getInstance();
                 Book oldBook;
                 try {
-                    stringBook = mv.getJlist().getSelectedValue();
+                    stringBook = mainView.getJlist().getSelectedValue();
                     // Найдем индекс начала и конца значения id
                     int idStart = stringBook.indexOf("id='") + 4; // 4 символа после "id='"
                     int idEnd = stringBook.indexOf("'", idStart); // Найдем следующую одинарную кавычку после id
@@ -114,9 +115,9 @@ public class MainViewController implements Observer {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int k = Integer.parseInt(mv.getNumPage().getText());
+                int k = Integer.parseInt(mainView.getNumPage().getText());
                 k++;
-                mv.setNumPage(k);
+                mainView.setNumPage(k);
                 update();
             }
         });
@@ -126,11 +127,11 @@ public class MainViewController implements Observer {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int k = Integer.parseInt(mv.getNumPage().getText());
+                int k = Integer.parseInt(mainView.getNumPage().getText());
                 k--;
                 if (k < 1)
                     k = 1;
-                mv.setNumPage(k);
+                    mainView.setNumPage(k);
                 update();
             }
         });
@@ -146,7 +147,7 @@ public class MainViewController implements Observer {
                 BookModel bm = BookModel.getInstance();
                 Book book;
                 try {
-                    stringBook = mv.getJlist().getSelectedValue();
+                    stringBook = mainView.getJlist().getSelectedValue();
                     // Найдем индекс начала и конца значения id
                     int idStart = stringBook.indexOf("id='") + 4; // 4 символа после "id='"
                     int idEnd = stringBook.indexOf("'", idStart); // Найдем следующую одинарную кавычку после id
@@ -172,9 +173,9 @@ public class MainViewController implements Observer {
     }
 
     public void update() {
-        JList<String> jlist = mv.getJlist();
+        JList<String> jlist = mainView.getJlist();
         int n = 30;
-        int k = Integer.parseInt(mv.getNumPage().getText());
+        int k = Integer.parseInt(mainView.getNumPage().getText());
         BookModel bm = BookModel.getInstance();
         List<ShortBook> books;
         String[] arr = new String[n];
