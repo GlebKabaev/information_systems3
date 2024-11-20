@@ -16,7 +16,8 @@ public class MainView  {
     private JButton next =new JButton(">");
     private JButton back =new JButton("<");
     private JLabel numPage = new JLabel("1");
-
+    private String[] sortOptions = {"id", "title", "author", "genre", "quantity", "depositAmount", "rentalCost"};
+    private JComboBox<String> sortComboBox = new JComboBox<>(sortOptions);
     
     
     // public void update(ArrayList<String> newInfo) {
@@ -59,6 +60,9 @@ public class MainView  {
         //numPage
         numPage.setBounds(200+140, 700, 40, 40);
         frame.add(numPage);
+        //combobox
+        sortComboBox.setBounds(470, 120, 120, 30);
+        frame.add(sortComboBox);
     }
     public void openFrame() {
         frame.setVisible(true);
@@ -105,6 +109,9 @@ public class MainView  {
     public JLabel getNumPage(){
         return numPage;
     }
+    public JComboBox<String> getSortComboBox() {
+        return sortComboBox;
+    }
     //setters
     public void setLabel(String text) {
         label.setText(text);
@@ -137,6 +144,8 @@ public class MainView  {
     public void setDeleteButton(JButton newDeleteButton){
         deleteButton = newDeleteButton;
     }
-    
+    public void setCombobox(JComboBox<String> newCombobox){
+        sortComboBox = newCombobox;
+    }
     
 }

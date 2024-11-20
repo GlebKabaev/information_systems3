@@ -41,9 +41,9 @@ public class BookModel implements Observable{
     public ShortBook getShortBookById(int id){
         return db.getShortBookById(id);
     }
-    public List<ShortBook> get_k_n_shortList(int k, int n){
+    public List<ShortBook> get_k_n_shortList(int k, int n,String filter,String sort){
         try {
-            return db.get_k_n_shortList(k, n);
+            return db.get_k_n_shortList(k, n,filter,sort);
         } catch (IOException e) {
             e.printStackTrace();
         }

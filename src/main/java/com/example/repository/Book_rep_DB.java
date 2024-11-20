@@ -142,13 +142,13 @@ public class Book_rep_DB {
         }
         return 0; // Если произошла ошибка, возвращаем 0
     }
-    public List<ShortBook> get_k_n_shortList(int k, int n) throws IOException {
-        String query = "SELECT id, title, author, genre FROM Books ORDER BY id LIMIT ? OFFSET ?";
+    public List<ShortBook> get_k_n_shortList(int k, int n,String filter,String sort) throws IOException {
+        String query = "SELECT id, title, author, genre FROM Books ORDER BY " +sort+" LIMIT ? OFFSET ?";
         List<ShortBook> shortBooks = new ArrayList<>();
     
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement stmt = conn.prepareStatement(query)) {
-    
+            //stmt.setString(1,sort);
             stmt.setInt(1, n); // Лимит на количество записей
             stmt.setInt(2, k * n); // Сдвиг для выборки
     

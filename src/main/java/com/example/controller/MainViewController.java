@@ -193,13 +193,17 @@ public class MainViewController implements Observer {
     public void update() {
         JList<String> jlist = mainView.getJlist();
         int n = 30;
+        //String filter = mainView.getFilterField().getText(); // Поле ввода фильтра
+        String sort = (String) mainView.getSortComboBox().getSelectedItem(); // Выпадающий список сортировки
+        String filter = "";
+        //String sort = "";
         int k = Integer.parseInt(mainView.getNumPage().getText());
         BookModel bm = BookModel.getInstance();
         List<ShortBook> books;
         String[] arr = new String[n];
         try {
 
-            books = bm.get_k_n_shortList(k - 1, n);
+            books = bm.get_k_n_shortList(k - 1, n,filter,sort);
             for (int i = 0; i < books.size(); i++) {
                 arr[i] = books.get(i).toString();
             }
