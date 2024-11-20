@@ -203,7 +203,7 @@ public class MainViewController implements Observer {
         String[] arr = new String[n];
         try {
 
-            books = bm.get_k_n_shortList(k - 1, n,filter,sort);
+            books = bm.get_k_n_shortList(k - 1, n);
             for (int i = 0; i < books.size(); i++) {
                 arr[i] = books.get(i).toString();
             }

@@ -7,7 +7,7 @@ import com.example.repository.*;
 public class BookModel implements Observable{
     private static BookModel bm;
     private Book_rep_DB db= Book_rep_DB.getInstance();
-
+    private Repository edb=ExtendRep.getInstance(db);
     public static BookModel getInstance(){
         if(bm==null){
             bm=new BookModel();
@@ -41,10 +41,10 @@ public class BookModel implements Observable{
     public ShortBook getShortBookById(int id){
         return db.getShortBookById(id);
     }
-    public List<ShortBook> get_k_n_shortList(int k, int n,String filter,String sort){
+    public List<ShortBook> get_k_n_shortList(int k, int n){
         try {
-            return db.get_k_n_shortList(k, n,filter,sort);
-        } catch (IOException e) {
+            return edb.get_k_n_shortList(k, n);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new ArrayList<ShortBook>();
