@@ -14,6 +14,8 @@ import com.example.view.MainView;
 import com.example.view.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class MainViewController implements Observer {
     private ViewFactory viewFactory;
@@ -30,7 +32,8 @@ public class MainViewController implements Observer {
         setNextActionListener(mainView.getNext());
         setBackActionListener(mainView.getBack());
         setDeleteActionListener(mainView.getDeleteButton());
-
+        setIgnoreNotNumbers(mainView.getMaxField());
+        setIgnoreNotNumbers(mainView.getMinField());
     }
 
     public static MainViewController getInstance() {
@@ -82,6 +85,18 @@ public class MainViewController implements Observer {
                 JOptionPane.showMessageDialog(null, "Выберите книгу из списка!");
                     
                     return;
+            }
+        });
+    }
+
+    private void setIgnoreNotNumbers(JTextField field) {
+        field.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume(); // Игнорируем символ
+                }
             }
         });
     }
@@ -194,6 +209,11 @@ public class MainViewController implements Observer {
         JList<String> jlist = mainView.getJlist();
         int n = 30;
         //String filter = mainView.getFilterField().getText(); // Поле ввода фильтра
+        if(!mainView.getMaxField().getText().equals("") && !mainView.getMinField().getText().equals("")){
+            if(Integer.parseInt(mainView.getMaxField().getText())<Integer.parseInt(mainView.getMinField().getText())){
+                JOptionPane.showMessageDialog(null, "Минимальное значение не должно привышать максимальное");
+            }
+        }
         String sort = (String) mainView.getSortComboBox().getSelectedItem(); // Выпадающий список сортировки
         String filter = "";
         //String sort = "";

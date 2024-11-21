@@ -27,7 +27,16 @@ public class ExtendRep extends RepositoryDecorator{
     public List<ShortBook> sort_get_k_n_shortList(int k, int n) throws IOException {
         MainView mainView =MainView.getInstance();
         String sort = (String) mainView.getSortComboBox().getSelectedItem(); // Выпадающий список сортировки
-        String query = "SELECT id, title, author, genre FROM Books ORDER BY " +sort+" LIMIT ? OFFSET ?";
+        int min=0;
+        int max=Integer.MAX_VALUE;
+        if(!mainView.getMinField().getText().equals("")){
+            min=Integer.parseInt(mainView.getMinField().getText());
+        }
+        if(!mainView.getMaxField().getText().equals("")){
+            max=Integer.parseInt(mainView.getMaxField().getText());   
+        }
+        
+        String query =String.format("SELECT id, title, author, genre FROM Books WHERE quantity >= %d AND quantity<=%d ORDER BY %s LIMIT ? OFFSET ?",min,max,sort);
         List<ShortBook> shortBooks = new ArrayList<>();
         String url = "jdbc:postgresql://localhost:5432/Library_DB";
         String user = "myuser";

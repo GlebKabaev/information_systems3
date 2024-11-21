@@ -9,13 +9,15 @@ public class MainView  {
     private JLabel label = new JLabel("Welcome");
     private JList<String> jlist=new JList<>() ;
     private JButton button=new JButton("Show full book info");
-    private JButton getButton = new JButton("Get Books"); 
+    private JButton getButton = new JButton("Обновить"); 
     private JButton addButton = new JButton("Добавить книгу");
     private JButton updateButton =new JButton("Изменить книгу");
     private JButton deleteButton = new JButton("Удалить книгу");
     private JButton next =new JButton(">");
     private JButton back =new JButton("<");
     private JLabel numPage = new JLabel("1");
+    private JTextField minField = new JTextField();
+    private JTextField maxField = new JTextField();
     private String[] sortOptions = {"id", "title", "author", "genre", "quantity", "depositAmount", "rentalCost"};
     private JComboBox<String> sortComboBox = new JComboBox<>(sortOptions);
     
@@ -63,6 +65,12 @@ public class MainView  {
         //combobox
         sortComboBox.setBounds(470, 120, 120, 30);
         frame.add(sortComboBox);
+        //minField
+        minField.setBounds(610, 120,70,30);
+        frame.add(minField);
+        //maxField
+        maxField.setBounds(690, 120,70,30);
+        frame.add(maxField);
     }
     public void openFrame() {
         frame.setVisible(true);
@@ -112,6 +120,12 @@ public class MainView  {
     public JComboBox<String> getSortComboBox() {
         return sortComboBox;
     }
+    public JTextField getMinField() {
+        return minField;
+    }
+    public JTextField getMaxField() {
+        return maxField;
+    }
     //setters
     public void setLabel(String text) {
         label.setText(text);
@@ -147,5 +161,12 @@ public class MainView  {
     public void setCombobox(JComboBox<String> newCombobox){
         sortComboBox = newCombobox;
     }
+    public void setMinField(JTextField minField){
+        this.minField = minField;
+    }
+    public void setMaxField(JTextField maxField){
+        this.maxField = maxField;
+    }
+    
     
 }
