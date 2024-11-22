@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.model.ShortBook;
-import com.example.view.MainView;
+//import com.example.view.MainView;
 
-public class ExtendRep extends RepositoryDecorator{
+public class ExtendRep extends RepositoryDecorator implements SortableRepository{
     private static ExtendRep instance;
     
     private ExtendRep(Repository repository){
@@ -24,17 +24,17 @@ public class ExtendRep extends RepositoryDecorator{
         }
         return instance;
     }
-    public List<ShortBook> sort_get_k_n_shortList(int k, int n) throws IOException {
-        MainView mainView =MainView.getInstance();
-        String sort = (String) mainView.getSortComboBox().getSelectedItem(); // Выпадающий список сортировки
-        int min=0;
-        int max=Integer.MAX_VALUE;
-        if(!mainView.getMinField().getText().equals("")){
-            min=Integer.parseInt(mainView.getMinField().getText());
-        }
-        if(!mainView.getMaxField().getText().equals("")){
-            max=Integer.parseInt(mainView.getMaxField().getText());   
-        }
+    public List<ShortBook> sort_get_k_n_shortList(int k, int n,String sort, int min, int max) throws IOException {
+        // MainView mainView =MainView.getInstance();//тихий ужас
+        // String sort = (String) mainView.getSortComboBox().getSelectedItem(); // Выпадающий список сортировки
+        // int min=0;
+        // int max=Integer.MAX_VALUE;
+        // if(!mainView.getMinField().getText().equals("")){
+        //     min=Integer.parseInt(mainView.getMinField().getText());
+        // }
+        // if(!mainView.getMaxField().getText().equals("")){
+        //     max=Integer.parseInt(mainView.getMaxField().getText());   
+        // }
         
         String query =String.format("SELECT id, title, author, genre FROM Books WHERE quantity >= %d AND quantity<=%d ORDER BY %s LIMIT ? OFFSET ?",min,max,sort);
         List<ShortBook> shortBooks = new ArrayList<>();
@@ -64,6 +64,6 @@ public class ExtendRep extends RepositoryDecorator{
     }
     @Override
     public List<ShortBook> get_k_n_shortList(int k, int n) throws IOException{
-        return sort_get_k_n_shortList( k,  n);
+        return get_k_n_shortList( k,  n);
     }
 }

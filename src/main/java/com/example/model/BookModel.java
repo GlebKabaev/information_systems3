@@ -42,9 +42,19 @@ public class BookModel implements Observable{
     }
     public List<ShortBook> get_k_n_shortList(int k, int n){
         try {
-            return edb.get_k_n_shortList(k, n);
+            return db.get_k_n_shortList(k, n);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return new ArrayList<ShortBook>();
+    }
+    public List<ShortBook> sort_get_k_n_shortList(int k, int n, String sort, int min, int max){
+        if (edb instanceof SortableRepository sortableRepository) {
+            try {
+                return sortableRepository.sort_get_k_n_shortList(k, n, sort, min, max);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return new ArrayList<ShortBook>();
     }

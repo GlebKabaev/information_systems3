@@ -208,22 +208,28 @@ public class MainViewController implements Observer {
     public void update() {
         JList<String> jlist = mainView.getJlist();
         int n = 30;
-        //String filter = mainView.getFilterField().getText(); // Поле ввода фильтра
+        
         if(!mainView.getMaxField().getText().equals("") && !mainView.getMinField().getText().equals("")){
-            if(Integer.parseInt(mainView.getMaxField().getText())<Integer.parseInt(mainView.getMinField().getText())){
+            if(Integer.parseInt(mainView.getMaxField().getText()) < Integer.parseInt(mainView.getMinField().getText())){
                 JOptionPane.showMessageDialog(null, "Минимальное значение не должно привышать максимальное");
             }
         }
         String sort = (String) mainView.getSortComboBox().getSelectedItem(); // Выпадающий список сортировки
-        String filter = "";
-        //String sort = "";
+        int min=0;
+        int max=Integer.MAX_VALUE;
+        if(!mainView.getMinField().getText().equals("")){
+            min=Integer.parseInt(mainView.getMinField().getText());
+        }
+        if(!mainView.getMaxField().getText().equals("")){
+            max=Integer.parseInt(mainView.getMaxField().getText());   
+        }
         int k = Integer.parseInt(mainView.getNumPage().getText());
         BookModel bm = BookModel.getInstance();
         List<ShortBook> books;
         String[] arr = new String[n];
         try {
 
-            books = bm.get_k_n_shortList(k - 1, n);
+            books = bm.sort_get_k_n_shortList(k - 1, n,sort,min,max);
             for (int i = 0; i < books.size(); i++) {
                 arr[i] = books.get(i).toString();
             }
